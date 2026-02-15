@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useMemo } from 'react';
 import { CartItem, UserInfo, PaymentMethod } from '../types';
-import { DELIVERY_FEE, WHATSAPP_NUMBER } from '../constants';
-import { X, Trash2, MapPin, CreditCard, DollarSign, Send, Minus, Plus } from 'lucide-react';
+import { DELIVERY_FEE, WHATSAPP_NUMBER, COUPONS } from '../constants';
+import { X, Trash2, MapPin, CreditCard, DollarSign, Send, Minus, Plus, TicketPercent, CheckCircle, XCircle } from 'lucide-react';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -24,8 +25,27 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
     needChange: ''
   });
 
+  const [couponCode, setCouponCode] = useState('');
+  const [appliedCoupon, setAppliedCoupon] = useState<{ code: string, type: 'PERCENTAGE' | 'FIXED', value: number } | null>(null);
+  const [couponError, setCouponError] = useState('');
+
   const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const total = subtotal + DELIVERY_FEE;
+  
+  const discountAmount = useMemo(() => {
+    if (!appliedCoupon) return 0;
+    
+    let val = 0;
+    if (appliedCoupon.type === 'FIXED') {
+      val = appliedCoupon.value;
+    } else if (appliedCoupon.type === 'PERCENTAGE') {
+      val = (subtotal * appliedCoupon.value) / 100;
+    }
+    
+    // Ensure discount doesn't exceed subtotal
+    return Math.min(val, subtotal);
+  }, [appliedCoupon, subtotal]);
+
+  const total = Math.max(0, subtotal + DELIVERY_FEE - discountAmount);
 
   // Reset step when closed
   useEffect(() => {
@@ -35,6 +55,28 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setUserInfo(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleApplyCoupon = () => {
+    const code = couponCode.trim().toUpperCase();
+    if (!code) return;
+    
+    const coupon = COUPONS[code];
+    
+    if (coupon) {
+      setAppliedCoupon({ code, ...coupon });
+      setCouponError('');
+      setCouponCode('');
+    } else {
+      setCouponError('Cupom inválido');
+      setAppliedCoupon(null);
+    }
+  };
+
+  const handleRemoveCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponCode('');
+    setCouponError('');
   };
 
   const handleFinishOrder = () => {
@@ -60,6 +102,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
     message += `--------------------------------\n`;
     message += `📦 *Subtotal:* ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}\n`;
     message += `🛵 *Entrega:* ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(DELIVERY_FEE)}\n`;
+    
+    if (discountAmount > 0 && appliedCoupon) {
+      message += `🎟️ *Cupom (${appliedCoupon.code}):* -${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(discountAmount)}\n`;
+    }
+
     message += `💰 *TOTAL: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}*\n`;
     message += `--------------------------------\n`;
     message += `📍 *ENDEREÇO DE ENTREGA:*\n`;
@@ -263,15 +310,66 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
         {/* Footer Totals */}
         {cart.length > 0 && (
           <div className="p-4 bg-brand-gray border-t border-gray-700 shrink-0 space-y-3">
-             <div className="flex justify-between text-gray-400 text-sm">
-                <span>Subtotal</span>
-                <span>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}</span>
+             {/* Coupon Section */}
+             <div className="mb-2">
+               {appliedCoupon ? (
+                 <div className="bg-brand-yellow/10 border border-brand-yellow/30 rounded-lg p-3 flex justify-between items-center">
+                   <div className="flex items-center gap-2">
+                     <TicketPercent size={18} className="text-brand-yellow" />
+                     <div>
+                       <p className="text-brand-yellow font-bold text-sm">Cupom Aplicado!</p>
+                       <p className="text-gray-400 text-xs">{appliedCoupon.code}</p>
+                     </div>
+                   </div>
+                   <button onClick={handleRemoveCoupon} className="text-gray-400 hover:text-white">
+                     <XCircle size={20} />
+                   </button>
+                 </div>
+               ) : (
+                 <div className="flex gap-2">
+                   <div className="relative flex-1">
+                     <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                       <TicketPercent size={16} className="text-gray-500" />
+                     </div>
+                     <input 
+                       type="text" 
+                       placeholder="Cupom de desconto" 
+                       className="w-full bg-brand-darker border border-gray-700 rounded-lg py-2 pl-10 pr-3 text-sm text-white focus:border-brand-yellow outline-none uppercase"
+                       value={couponCode}
+                       onChange={(e) => setCouponCode(e.target.value)}
+                     />
+                   </div>
+                   <button 
+                     onClick={handleApplyCoupon}
+                     disabled={!couponCode}
+                     className="bg-gray-700 hover:bg-brand-yellow hover:text-black text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                   >
+                     Aplicar
+                   </button>
+                 </div>
+               )}
+               {couponError && <p className="text-red-500 text-xs mt-1 ml-1">{couponError}</p>}
              </div>
-             <div className="flex justify-between text-gray-400 text-sm">
-                <span>Taxa de Entrega</span>
-                <span>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(DELIVERY_FEE)}</span>
+
+             <div className="space-y-1">
+               <div className="flex justify-between text-gray-400 text-sm">
+                  <span>Subtotal</span>
+                  <span>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}</span>
+               </div>
+               <div className="flex justify-between text-gray-400 text-sm">
+                  <span>Taxa de Entrega</span>
+                  <span>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(DELIVERY_FEE)}</span>
+               </div>
+               
+               {appliedCoupon && (
+                 <div className="flex justify-between text-brand-yellow text-sm font-semibold">
+                    <span>Desconto ({appliedCoupon.code})</span>
+                    <span>- {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(discountAmount)}</span>
+                 </div>
+               )}
              </div>
-             <div className="flex justify-between text-brand-yellow font-bold text-xl pb-2">
+             
+             <div className="flex justify-between text-white font-bold text-xl pt-2 border-t border-gray-700/50">
                 <span>Total</span>
                 <span>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}</span>
              </div>
@@ -279,7 +377,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
              {step === 'CART' ? (
                 <button
                   onClick={() => setStep('CHECKOUT')}
-                  className="w-full bg-brand-yellow hover:bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                  className="w-full bg-brand-yellow hover:bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors mt-2"
                 >
                   Continuar para Endereço
                   <MapPin size={20} />
@@ -287,7 +385,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
              ) : (
                 <button
                   onClick={handleFinishOrder}
-                  className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-lg shadow-green-900/20"
+                  className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-lg shadow-green-900/20 mt-2"
                 >
                   Enviar Pedido no WhatsApp
                   <Send size={20} />

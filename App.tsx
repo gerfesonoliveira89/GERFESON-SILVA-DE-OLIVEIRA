@@ -1,16 +1,17 @@
 
 import React, { useState, useMemo } from 'react';
-import { CATEGORIES, MENU_ITEMS } from './constants';
+import { CATEGORIES, MENU_ITEMS, WHATSAPP_NUMBER } from './constants';
 import { Product, CartItem, Category } from './types';
 import { ProductModal } from './components/ProductModal';
 import { CartDrawer } from './components/CartDrawer';
-import { ShoppingBag, Star, Search, MapPin } from 'lucide-react';
+import { ShoppingBag, Star, Search, MapPin, Menu, Home, Phone, Info, X } from 'lucide-react';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState<Category>('HAMBURGUERS');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // Derived state
@@ -63,24 +64,31 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-darker pb-20">
+    <div className="min-h-screen bg-brand-darker pb-20 font-sans">
       
       {/* Header / Hero */}
       <header className="relative bg-brand-gray pt-6 pb-20 rounded-b-[2.5rem] overflow-hidden shadow-2xl z-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <h1 className="text-brand-yellow font-bold text-lg tracking-wider mb-1">HAMBURGUERIA GOURMET</h1>
-              <h2 className="text-3xl font-extrabold text-white leading-tight">DO BAIANO</h2>
+              <h1 className="text-3xl font-extrabold text-brand-yellow leading-none tracking-tight">HAMBURGUERIA</h1>
+              <h2 className="text-3xl font-extrabold text-white leading-none tracking-tight">DO BAIANO</h2>
             </div>
-            <div className="bg-brand-dark/50 p-2 rounded-full border border-gray-700/50 backdrop-blur-md">
-              <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80" alt="Logo" className="w-10 h-10 rounded-full object-cover" />
+            
+            {/* Top Right Menu Button */}
+            <div className="flex items-center gap-2">
+               <button 
+                onClick={() => setIsMenuOpen(true)}
+                className="bg-brand-dark/50 p-3 rounded-full border border-gray-700/50 backdrop-blur-md text-white hover:bg-brand-yellow hover:text-black transition-colors"
+              >
+                <Menu size={24} />
+              </button>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-6">
+          <div className="flex items-center gap-2 text-gray-300 text-sm mb-6 bg-brand-dark/30 w-fit px-3 py-1 rounded-full border border-gray-700/30">
             <MapPin size={16} className="text-brand-yellow" />
-            <span>Entrega rápida em toda a região</span>
+            <span>Entrega rápida em toda cidade de Glória</span>
           </div>
 
           {/* Search */}
@@ -98,7 +106,7 @@ function App() {
       </header>
 
       {/* Categories Navigation (Menu) */}
-      <div className="sticky top-0 z-20 bg-brand-darker/95 backdrop-blur-sm border-b border-gray-800 py-3 shadow-lg">
+      <div className="sticky top-0 z-20 bg-brand-darker/95 backdrop-blur-md border-b border-gray-800 py-3 shadow-lg">
         <div className="container mx-auto">
           <div className="flex overflow-x-auto no-scrollbar gap-3 px-4">
             {CATEGORIES.map(cat => (
@@ -108,11 +116,11 @@ function App() {
                 className={`flex flex-col items-center justify-center min-w-[5rem] py-2 rounded-xl transition-all duration-300 ${
                   activeCategory === cat.id && !searchQuery
                     ? 'bg-brand-yellow text-brand-darker font-bold transform scale-105 shadow-[0_0_15px_rgba(255,193,7,0.3)]'
-                    : 'bg-brand-gray/50 text-gray-400 hover:bg-brand-gray hover:text-gray-200'
+                    : 'bg-brand-gray text-gray-300 hover:bg-brand-gray/80 hover:text-white border border-gray-800'
                 }`}
               >
                 <span className="text-2xl mb-1 filter drop-shadow-md">{cat.icon}</span>
-                <span className="text-[10px] uppercase tracking-wide">{cat.label.split(' ')[0]}</span>
+                <span className="text-[11px] font-medium uppercase tracking-wide">{cat.label.split(' ')[0]}</span>
               </button>
             ))}
           </div>
@@ -140,8 +148,8 @@ function App() {
                 className="group bg-brand-gray rounded-2xl p-3 border border-gray-800/50 hover:border-brand-yellow/30 transition-all flex gap-4 cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
               >
-                <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-900">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
                   {product.isPopular && (
                     <div className="absolute top-0 left-0 bg-brand-yellow text-[10px] font-bold px-2 py-1 rounded-br-lg text-brand-darker flex items-center gap-1 shadow-md">
                       <Star size={10} fill="black" /> TOP
@@ -183,6 +191,38 @@ function App() {
           </span>
         </div>
       </button>
+
+      {/* Side Menu Drawer */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)}></div>
+          <div className="relative w-64 bg-brand-darker h-full shadow-2xl flex flex-col p-6 animate-slideInRight">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-xl font-bold text-brand-yellow">Menu</h2>
+              <button onClick={() => setIsMenuOpen(false)} className="text-gray-400 hover:text-white">
+                <X size={24} />
+              </button>
+            </div>
+            
+            <nav className="space-y-4">
+              <button onClick={() => { setIsMenuOpen(false); window.scrollTo(0,0); }} className="flex items-center gap-3 text-white hover:text-brand-yellow transition-colors w-full p-2 rounded-lg hover:bg-gray-800">
+                <Home size={20} /> Início
+              </button>
+              <button onClick={() => { setIsCartOpen(true); setIsMenuOpen(false); }} className="flex items-center gap-3 text-white hover:text-brand-yellow transition-colors w-full p-2 rounded-lg hover:bg-gray-800">
+                <ShoppingBag size={20} /> Carrinho ({cartTotalItems})
+              </button>
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-white hover:text-brand-yellow transition-colors w-full p-2 rounded-lg hover:bg-gray-800">
+                <Phone size={20} /> Contato (WhatsApp)
+              </a>
+              <div className="h-px bg-gray-800 my-4"></div>
+              <p className="text-gray-500 text-sm px-2">
+                Hamburgueria do Baiano<br/>
+                Glória - SE
+              </p>
+            </nav>
+          </div>
+        </div>
+      )}
 
       {/* Modals */}
       <ProductModal 
