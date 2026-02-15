@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { CATEGORIES, MENU_ITEMS } from './constants';
 import { Product, CartItem, Category } from './types';
@@ -24,6 +25,7 @@ function App() {
     });
   }, [activeCategory, searchQuery]);
 
+  const activeCategoryLabel = CATEGORIES.find(c => c.id === activeCategory)?.label;
   const cartTotalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   // Handlers
@@ -72,7 +74,7 @@ function App() {
               <h2 className="text-3xl font-extrabold text-white leading-tight">DO BAIANO</h2>
             </div>
             <div className="bg-brand-dark/50 p-2 rounded-full border border-gray-700/50 backdrop-blur-md">
-              <img src="https://picsum.photos/50/50?random=logo" alt="Logo" className="w-10 h-10 rounded-full" />
+              <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=150&q=80" alt="Logo" className="w-10 h-10 rounded-full object-cover" />
             </div>
           </div>
 
@@ -95,22 +97,22 @@ function App() {
         </div>
       </header>
 
-      {/* Categories Navigation */}
-      <div className="sticky top-0 z-20 bg-brand-darker/95 backdrop-blur-sm border-b border-gray-800 py-2">
+      {/* Categories Navigation (Menu) */}
+      <div className="sticky top-0 z-20 bg-brand-darker/95 backdrop-blur-sm border-b border-gray-800 py-3 shadow-lg">
         <div className="container mx-auto">
-          <div className="flex overflow-x-auto no-scrollbar gap-4 px-4 py-2">
+          <div className="flex overflow-x-auto no-scrollbar gap-3 px-4">
             {CATEGORIES.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => { setActiveCategory(cat.id as Category); setSearchQuery(''); }}
-                className={`flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full border transition-all duration-300 ${
+                className={`flex flex-col items-center justify-center min-w-[5rem] py-2 rounded-xl transition-all duration-300 ${
                   activeCategory === cat.id && !searchQuery
-                    ? 'bg-brand-yellow text-brand-darker font-bold border-brand-yellow shadow-glow'
-                    : 'bg-transparent text-gray-400 border-gray-700 hover:border-gray-500'
+                    ? 'bg-brand-yellow text-brand-darker font-bold transform scale-105 shadow-[0_0_15px_rgba(255,193,7,0.3)]'
+                    : 'bg-brand-gray/50 text-gray-400 hover:bg-brand-gray hover:text-gray-200'
                 }`}
               >
-                <span className="text-xl">{cat.icon}</span>
-                <span className="text-sm">{cat.label}</span>
+                <span className="text-2xl mb-1 filter drop-shadow-md">{cat.icon}</span>
+                <span className="text-[10px] uppercase tracking-wide">{cat.label.split(' ')[0]}</span>
               </button>
             ))}
           </div>
@@ -119,6 +121,13 @@ function App() {
 
       {/* Product List */}
       <main className="container mx-auto px-4 py-6">
+        {!searchQuery && (
+          <div className="flex items-center gap-2 mb-6">
+            <div className="w-1 h-6 bg-brand-yellow rounded-full"></div>
+            <h3 className="text-xl font-bold text-white uppercase tracking-wide">{activeCategoryLabel}</h3>
+          </div>
+        )}
+
         {filteredProducts.length === 0 ? (
            <div className="text-center py-20 text-gray-500">
              <p>Nenhum produto encontrado.</p>
@@ -131,10 +140,10 @@ function App() {
                 className="group bg-brand-gray rounded-2xl p-3 border border-gray-800/50 hover:border-brand-yellow/30 transition-all flex gap-4 cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
               >
-                <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden">
+                <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   {product.isPopular && (
-                    <div className="absolute top-0 left-0 bg-brand-yellow text-[10px] font-bold px-2 py-1 rounded-br-lg text-brand-darker flex items-center gap-1">
+                    <div className="absolute top-0 left-0 bg-brand-yellow text-[10px] font-bold px-2 py-1 rounded-br-lg text-brand-darker flex items-center gap-1 shadow-md">
                       <Star size={10} fill="black" /> TOP
                     </div>
                   )}
