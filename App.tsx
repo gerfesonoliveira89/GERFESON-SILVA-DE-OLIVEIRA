@@ -67,12 +67,13 @@ function App() {
     <div className="min-h-screen bg-brand-darker pb-20 font-sans">
       
       {/* Header / Hero */}
-      <header className="relative bg-brand-gray pt-6 pb-20 rounded-b-[2.5rem] overflow-hidden shadow-2xl z-10">
+      <header className="relative bg-brand-gray pt-6 pb-6 rounded-b-[2.5rem] overflow-hidden shadow-2xl z-10">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <h1 className="text-3xl font-extrabold text-brand-yellow leading-none tracking-tight">HAMBURGUERIA</h1>
-              <h2 className="text-3xl font-extrabold text-white leading-none tracking-tight">DO BAIANO</h2>
+              <h1 className="text-3xl font-extrabold text-white leading-none tracking-tight">
+                HAMBURGUERIA <span className="text-brand-yellow">DO BAIANO</span>
+              </h1>
             </div>
             
             {/* Top Right Menu Button */}
@@ -107,20 +108,20 @@ function App() {
 
       {/* Categories Navigation (Menu) */}
       <div className="sticky top-0 z-20 bg-brand-darker/95 backdrop-blur-md border-b border-gray-800 py-3 shadow-lg">
-        <div className="container mx-auto">
-          <div className="flex overflow-x-auto no-scrollbar gap-3 px-4">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-3 gap-2">
             {CATEGORIES.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => { setActiveCategory(cat.id as Category); setSearchQuery(''); }}
-                className={`flex flex-col items-center justify-center min-w-[5rem] py-2 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center justify-center py-3 rounded-xl transition-all duration-300 ${
                   activeCategory === cat.id && !searchQuery
-                    ? 'bg-brand-yellow text-brand-darker font-bold transform scale-105 shadow-[0_0_15px_rgba(255,193,7,0.3)]'
+                    ? 'bg-brand-yellow text-brand-darker font-bold shadow-[0_0_15px_rgba(255,193,7,0.3)]'
                     : 'bg-brand-gray text-gray-300 hover:bg-brand-gray/80 hover:text-white border border-gray-800'
                 }`}
               >
                 <span className="text-2xl mb-1 filter drop-shadow-md">{cat.icon}</span>
-                <span className="text-[11px] font-medium uppercase tracking-wide">{cat.label.split(' ')[0]}</span>
+                <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wide truncate w-full px-1">{cat.label.split(' ')[0]}</span>
               </button>
             ))}
           </div>
