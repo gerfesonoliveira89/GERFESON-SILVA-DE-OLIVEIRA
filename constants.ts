@@ -103,7 +103,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Pão, Presunto, Mussarela, Queijo Coalho na chapa.',
     price: 7.99,
     category: 'SANDUICHES',
-    image: 'https://images.unsplash.com/photo-1627308595186-e8d729e02c65?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1603903631889-b5f3ba4d5b9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 's2',
@@ -120,7 +120,7 @@ export const MENU_ITEMS: Product[] = [
     name: 'Batata Palito 350g',
     price: 19.99,
     category: 'FRITAS',
-    image: 'https://images.unsplash.com/photo-1573080496987-a199f8cd4058?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'f2',
@@ -129,7 +129,7 @@ export const MENU_ITEMS: Product[] = [
     price: 29.99,
     category: 'FRITAS',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1585109649139-3668018951a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'f3',
@@ -172,10 +172,10 @@ export const MENU_ITEMS: Product[] = [
   },
 
   // Adicionais
-  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad2', name: 'Bacon Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1606851682829-37f07cb679ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1619250907577-169f4482a522?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  { id: 'ad2', name: 'Bacon Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
   { id: 'ad3', name: 'Anéis de Cebola Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1625938146369-adc83368bda7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1612892010343-983b0c950d2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1587486913049-53fc88980cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1582234509702-8a9d19a3118d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1525351484163-7529414395d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
 ];
