@@ -4,7 +4,8 @@ import { CATEGORIES, MENU_ITEMS, WHATSAPP_NUMBER } from './constants';
 import { Product, CartItem, Category } from './types';
 import { ProductModal } from './components/ProductModal';
 import { CartDrawer } from './components/CartDrawer';
-import { ShoppingBag, Star, Search, MapPin, Menu, Home, Phone, Info, X } from 'lucide-react';
+import { ProductCard } from './components/ProductCard';
+import { ShoppingBag, Search, MapPin, Menu, Home, Phone, X, CheckCircle } from 'lucide-react';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState<Category>('HAMBURGUERS');
@@ -13,6 +14,7 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [toast, setToast] = useState<string | null>(null);
 
   // Derived state
   const filteredProducts = useMemo(() => {
@@ -46,7 +48,10 @@ function App() {
       }
       return [...prev, newItem];
     });
-    setIsCartOpen(true);
+    
+    // Don't open cart, just show confirmation toast
+    setToast(`${newItem.name} adicionado!`);
+    setTimeout(() => setToast(null), 3000);
   };
 
   const handleRemoveFromCart = (cartId: string) => {
@@ -66,6 +71,14 @@ function App() {
   return (
     <div className="min-h-screen bg-brand-darker pb-20 font-sans">
       
+      {/* Toast Notification */}
+      {toast && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 animate-bounce transition-all duration-300">
+          <CheckCircle size={20} />
+          <span className="font-bold text-sm">{toast}</span>
+        </div>
+      )}
+
       {/* Header / Hero */}
       <header className="relative bg-brand-gray pt-6 pb-6 rounded-b-[2.5rem] overflow-hidden shadow-2xl z-10">
         <div className="container mx-auto px-4">
@@ -144,35 +157,11 @@ function App() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map(product => (
-              <div 
-                key={product.id} 
-                className="group bg-brand-gray rounded-2xl p-3 border border-gray-800/50 hover:border-brand-yellow/30 transition-all flex gap-4 cursor-pointer"
-                onClick={() => setSelectedProduct(product)}
-              >
-                <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-900">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-                  {product.isPopular && (
-                    <div className="absolute top-0 left-0 bg-brand-yellow text-[10px] font-bold px-2 py-1 rounded-br-lg text-brand-darker flex items-center gap-1 shadow-md">
-                      <Star size={10} fill="black" /> TOP
-                    </div>
-                  )}
-                </div>
-                
-                <div className="flex-1 flex flex-col justify-between py-1">
-                  <div>
-                    <h3 className="font-bold text-white text-lg leading-tight mb-1">{product.name}</h3>
-                    <p className="text-gray-400 text-xs line-clamp-2">{product.description}</p>
-                  </div>
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="text-brand-yellow font-bold text-lg">
-                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}
-                    </span>
-                    <button className="bg-gray-700 hover:bg-brand-yellow hover:text-black text-white p-2 rounded-lg transition-colors">
-                      <ShoppingBag size={18} />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <ProductCard 
+                key={product.id}
+                product={product}
+                onClick={setSelectedProduct}
+              />
             ))}
           </div>
         )}
