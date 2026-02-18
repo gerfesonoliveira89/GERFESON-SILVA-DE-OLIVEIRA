@@ -25,7 +25,6 @@ const JUICE_FLAVORS = [
   'Caju', 'Cupuaçu', 'Graviola', 'Manga', 'Mangaba'
 ];
 
-// Imagens atualizadas e verificadas
 export const MENU_ITEMS: Product[] = [
   // Hambúrgueres
   {
@@ -34,7 +33,8 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne Gourmet, Mussarela, Presunto, Alface, Tomate, Cebola Caramelizada.',
     price: 16.99,
     category: 'HAMBURGUERS',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    // Imagem baseada no anexo 1: Carne, queijo derretido, presunto ondulado e salada
+    image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1000'
   },
   {
     id: 'h2',
@@ -42,7 +42,8 @@ export const MENU_ITEMS: Product[] = [
     description: 'Frango, Presunto, Mussarela, Requeijão Cremoso, Ovo, Alface, Tomate, Cebola Caramelizada.',
     price: 14.99,
     category: 'HAMBURGUERS',
-    image: 'https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    // Imagem baseada no anexo 2: Foco no ovo, queijo e camadas de recheio
+    image: 'https://images.unsplash.com/photo-1525164286253-04e68b9d94bb?q=80&w=1000'
   },
   {
     id: 'h3',
@@ -51,7 +52,7 @@ export const MENU_ITEMS: Product[] = [
     price: 21.99,
     category: 'HAMBURGUERS',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1607013251379-e6eecfffe234?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=1000'
   },
   {
     id: 'h4',
@@ -59,7 +60,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne, Calabresa, Cheddar, Presunto, Mussarela, Ovo, Alface, Tomate, Cebola Caramelizada.',
     price: 19.99,
     category: 'HAMBURGUERS',
-    image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1607013251379-e6eecfffe234?q=80&w=1000'
   },
   {
     id: 'h5',
@@ -67,7 +68,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne, Presunto, Mussarela, Queijo Cheddar, Ovo, Molho Barbecue, Anéis de Cebola, Alface, Tomate.',
     price: 21.99,
     category: 'HAMBURGUERS',
-    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1000'
   },
   {
     id: 'h6',
@@ -76,7 +77,7 @@ export const MENU_ITEMS: Product[] = [
     price: 29.99,
     category: 'HAMBURGUERS',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1586816001966-79b736744398?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1586816001966-79b736744398?q=80&w=1000'
   },
   {
     id: 'h7',
@@ -84,7 +85,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne Gourmet, Ovos, Calabresa, Bacon, Frango, Presunto, Mussarela, Alface, Tomate, Cebola Caramelizada, Milho Verde, Batata Palha.',
     price: 34.99,
     category: 'HAMBURGUERS',
-    image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?q=80&w=1000'
   },
   {
     id: 'h8',
@@ -93,7 +94,7 @@ export const MENU_ITEMS: Product[] = [
     price: 54.99,
     category: 'HAMBURGUERS',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1000'
   },
 
   // Sanduiches
@@ -103,7 +104,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Pão, Presunto, Mussarela, Queijo Coalho na chapa.',
     price: 7.99,
     category: 'SANDUICHES',
-    image: 'https://images.unsplash.com/photo-1603903631889-b5f3ba4d5b9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1000'
   },
   {
     id: 's2',
@@ -111,7 +112,7 @@ export const MENU_ITEMS: Product[] = [
     description: '02 Ovos, Mussarela, Presunto, Alface, Tomate, Cebola no pão.',
     price: 11.99,
     category: 'SANDUICHES',
-    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=1000'
   },
 
   // Fritas
@@ -120,7 +121,7 @@ export const MENU_ITEMS: Product[] = [
     name: 'Batata Palito 350g',
     price: 19.99,
     category: 'FRITAS',
-    image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?q=80&w=1000'
   },
   {
     id: 'f2',
@@ -129,7 +130,7 @@ export const MENU_ITEMS: Product[] = [
     price: 29.99,
     category: 'FRITAS',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1585109649139-3668018951a7?q=80&w=1000'
   },
   {
     id: 'f3',
@@ -137,19 +138,73 @@ export const MENU_ITEMS: Product[] = [
     description: 'Porção generosa, acompanha Molho Barbecue.',
     price: 24.99,
     category: 'FRITAS',
-    image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000'
   },
 
-  // Bebidas - Usando imagens genéricas de refrigerante para garantir carregamento
-  { id: 'b1', name: 'Coca-Cola Lata', price: 5.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b2', name: 'Coca Zero Lata', price: 5.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b3', name: 'Fanta Laranja Lata', price: 5.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b4', name: 'Guaraná Lata', price: 5.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b5', name: 'Coca-Cola 1L', price: 9.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b6', name: 'Coca Zero 1L', price: 9.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b7', name: 'Guaraná 1L', price: 9.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b8', name: 'Fanta 1L', price: 9.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'b9', name: 'Coca-Cola 2L', price: 13.99, category: 'BEBIDAS', image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  // Bebidas
+  { 
+    id: 'b1', 
+    name: 'Coca-Cola Lata', 
+    price: 5.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/51p1c2-y2IL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b2', 
+    name: 'Coca Zero Lata', 
+    price: 5.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/51l+aO-U8VL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b3', 
+    name: 'Fanta Laranja Lata', 
+    price: 5.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/61p-E9hT0HL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b4', 
+    name: 'Guaraná Lata', 
+    price: 5.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/61q3yI-IeDL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b5', 
+    name: 'Coca-Cola 1L', 
+    price: 9.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/61f9t-eX3IL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b6', 
+    name: 'Coca Zero 1L', 
+    price: 9.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/61h+e+aWlXL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b7', 
+    name: 'Guaraná 1L', 
+    price: 9.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/71X8y8yYtLL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b8', 
+    name: 'Fanta 1L', 
+    price: 9.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/61+9fK-sNOL._AC_SX679_.jpg' 
+  },
+  { 
+    id: 'b9', 
+    name: 'Coca-Cola 2L', 
+    price: 13.99, 
+    category: 'BEBIDAS', 
+    image: 'https://m.media-amazon.com/images/I/61f9t-eX3IL._AC_SX679_.jpg' 
+  },
 
   // Sucos
   { 
@@ -159,7 +214,7 @@ export const MENU_ITEMS: Product[] = [
     price: 10.00, 
     category: 'SUCOS', 
     flavors: JUICE_FLAVORS,
-    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1000'
   },
   { 
     id: 'su2', 
@@ -168,14 +223,14 @@ export const MENU_ITEMS: Product[] = [
     price: 9.00, 
     category: 'SUCOS', 
     flavors: JUICE_FLAVORS,
-    image: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80&w=1000'
   },
 
   // Adicionais
-  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1619250907577-169f4482a522?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad2', name: 'Bacon Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad3', name: 'Anéis de Cebola Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1582234509702-8a9d19a3118d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
-  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1525351484163-7529414395d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1563200727-b6f790c3779e?q=80&w=1000' },
+  { id: 'ad2', name: 'Bacon Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1606851094655-b2593a9af63f?q=80&w=1000' },
+  { id: 'ad3', name: 'Anéis de Cebola Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000' },
+  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1519077336050-46dee54995c6?q=80&w=1000' },
+  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?q=80&w=1000' },
+  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1582531652882-628d6c7028b0?q=80&w=1000' },
 ];
