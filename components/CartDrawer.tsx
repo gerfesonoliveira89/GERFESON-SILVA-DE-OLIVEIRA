@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { CartItem, UserInfo, PaymentMethod } from '../types';
 import { DELIVERY_FEE, WHATSAPP_NUMBER, COUPONS } from '../constants';
-import { X, Trash2, MapPin, CreditCard, DollarSign, Send, Minus, Plus, TicketPercent, CheckCircle, XCircle } from 'lucide-react';
+import { X, Trash2, MapPin, Send, Minus, Plus, TicketPercent, XCircle, ImageOff } from 'lucide-react';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -11,6 +11,24 @@ interface CartDrawerProps {
   onRemoveItem: (cartId: string) => void;
   onUpdateQuantity: (cartId: string, delta: number) => void;
 }
+
+const CartProductImage = ({ src, alt }: { src?: string, alt: string }) => {
+  const [hasError, setHasError] = useState(false);
+  return (
+    <div className="w-20 h-20 rounded-lg bg-gray-800 shrink-0 overflow-hidden flex items-center justify-center">
+      {hasError || !src ? (
+        <ImageOff size={20} className="text-gray-600" />
+      ) : (
+        <img 
+          src={src} 
+          alt={alt} 
+          className="w-full h-full object-cover" 
+          onError={() => setHasError(true)}
+        />
+      )}
+    </div>
+  );
+};
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, onRemoveItem, onUpdateQuantity }) => {
   const [step, setStep] = useState<'CART' | 'CHECKOUT'>('CART');
@@ -41,13 +59,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
       val = (subtotal * appliedCoupon.value) / 100;
     }
     
-    // Ensure discount doesn't exceed subtotal
     return Math.min(val, subtotal);
   }, [appliedCoupon, subtotal]);
 
   const total = Math.max(0, subtotal + DELIVERY_FEE - discountAmount);
 
-  // Reset step when closed
   useEffect(() => {
     if (!isOpen) setTimeout(() => setStep('CART'), 300);
   }, [isOpen]);
@@ -80,13 +96,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
   };
 
   const handleFinishOrder = () => {
-    // Validation
     if (!userInfo.name || !userInfo.address || !userInfo.neighborhood || !userInfo.number) {
       alert('Por favor, preencha todos os campos obrigatórios do endereço.');
       return;
     }
 
-    // Format Message
     let message = `🍔 *NOVO PEDIDO - HAMBURGUERIA GOURMET DO BAIANO*\n\n`;
     message += `*Cliente:* ${userInfo.name}\n`;
     if (userInfo.phone) message += `*Telefone:* ${userInfo.phone}\n`;
@@ -127,13 +141,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
 
-      {/* Drawer Content */}
       <div className="relative w-full max-w-md bg-brand-darker h-full shadow-2xl flex flex-col transform transition-transform duration-300">
-        
-        {/* Header */}
         <div className="p-4 flex items-center justify-between border-b border-gray-800 bg-brand-gray/50">
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
             {step === 'CART' ? '🛒 Seu Carrinho' : '📝 Finalizar Pedido'}
@@ -143,7 +153,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
           </button>
         </div>
 
-        {/* Body */}
         <div className="flex-1 overflow-y-auto p-4 no-scrollbar">
           {cart.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-gray-500 gap-4">
@@ -161,7 +170,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
                 <div className="space-y-4">
                   {cart.map((item) => (
                     <div key={item.cartId} className="bg-brand-gray p-3 rounded-xl border border-gray-700 flex gap-3">
-                      <img src={item.image} alt={item.name} className="w-20 h-20 rounded-lg object-cover bg-gray-800" />
+                      <CartProductImage src={item.image} alt={item.name} />
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start">
@@ -191,7 +200,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
 
               {step === 'CHECKOUT' && (
                 <div className="space-y-6">
-                  {/* Personal Info */}
                   <div className="space-y-3">
                     <h3 className="text-brand-yellow font-bold flex items-center gap-2 text-sm uppercase tracking-wider">
                       <div className="w-1 h-4 bg-brand-yellow rounded-full"></div>
@@ -215,7 +223,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
                     />
                   </div>
 
-                  {/* Address */}
                   <div className="space-y-3">
                     <h3 className="text-brand-yellow font-bold flex items-center gap-2 text-sm uppercase tracking-wider">
                       <div className="w-1 h-4 bg-brand-yellow rounded-full"></div>
@@ -257,7 +264,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
                     />
                   </div>
 
-                  {/* Payment */}
                   <div className="space-y-3">
                     <h3 className="text-brand-yellow font-bold flex items-center gap-2 text-sm uppercase tracking-wider">
                       <div className="w-1 h-4 bg-brand-yellow rounded-full"></div>
@@ -307,10 +313,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, o
           )}
         </div>
 
-        {/* Footer Totals */}
         {cart.length > 0 && (
           <div className="p-4 bg-brand-gray border-t border-gray-700 shrink-0 space-y-3">
-             {/* Coupon Section */}
              <div className="mb-2">
                {appliedCoupon ? (
                  <div className="bg-brand-yellow/10 border border-brand-yellow/30 rounded-lg p-3 flex justify-between items-center">

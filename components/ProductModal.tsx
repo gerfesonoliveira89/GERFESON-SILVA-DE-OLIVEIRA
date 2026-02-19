@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { Product, CartItem } from '../types';
-import { Plus, Minus, X, Check } from 'lucide-react';
+import { Plus, Minus, X, ImageOff } from 'lucide-react';
 
 interface ProductModalProps {
   product: Product | null;
@@ -13,6 +14,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, on
   const [observation, setObservation] = useState('');
   const [selectedFlavor, setSelectedFlavor] = useState<string>('');
   const [error, setError] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -20,6 +23,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, on
       setObservation('');
       setSelectedFlavor('');
       setError('');
+      setIsLoaded(false);
+      setHasError(false);
     }
   }, [product]);
 
@@ -50,15 +55,35 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, on
       <div className="bg-brand-gray w-full max-w-lg rounded-t-2xl sm:rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
         
         {/* Image Header */}
-        <div className="relative h-48 sm:h-56 bg-brand-darker shrink-0">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-full object-cover opacity-90"
-          />
+        <div className="relative h-48 sm:h-56 bg-brand-darker shrink-0 flex items-center justify-center">
+          
+          {/* Loading Skeleton */}
+          {!isLoaded && !hasError && (
+            <div className="absolute inset-0 bg-gray-800 animate-pulse z-10" />
+          )}
+
+          {/* Error State */}
+          {hasError ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-gray-500 z-10">
+              <ImageOff size={48} className="mb-2 opacity-30" />
+              <span className="text-xs uppercase tracking-widest opacity-40 font-bold">Imagem Indisponível</span>
+            </div>
+          ) : (
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className={`w-full h-full object-cover opacity-90 transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setIsLoaded(true)}
+              onError={() => {
+                setHasError(true);
+                setIsLoaded(false);
+              }}
+            />
+          )}
+
           <button 
             onClick={onClose}
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white transition-colors"
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white transition-colors z-20"
           >
             <X size={24} />
           </button>

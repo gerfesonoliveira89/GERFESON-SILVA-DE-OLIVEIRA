@@ -1,8 +1,7 @@
-
 import { Product } from './types';
 
 export const WHATSAPP_NUMBER = '5579999524097';
-export const DELIVERY_FEE = 2.00;
+export const DELIVERY_FEE = 2.0;
 
 export const CATEGORIES = [
   { id: 'HAMBURGUERS', label: 'Hambúrgueres', icon: '🍔' },
@@ -15,8 +14,8 @@ export const CATEGORIES = [
 
 export const COUPONS: Record<string, { type: 'PERCENTAGE' | 'FIXED', value: number }> = {
   'BAIANO10': { type: 'PERCENTAGE', value: 10 },
-  'ENTREGA': { type: 'FIXED', value: 2.00 },
-  'BEMVINDO': { type: 'FIXED', value: 5.00 },
+  'ENTREGA': { type: 'FIXED', value: 2.0 },
+  'BEMVINDO': { type: 'FIXED', value: 5.0 },
   'BAIANO': { type: 'PERCENTAGE', value: 5 },
 };
 
@@ -33,7 +32,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne Gourmet, Mussarela, Presunto, Alface, Tomate, Cebola Caramelizada.',
     price: 16.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer clássico suculento
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000'
   },
   {
@@ -42,7 +40,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Frango, Presunto, Mussarela, Requeijão Cremoso, Ovo, Alface, Tomate, Cebola Caramelizada.',
     price: 14.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer de frango estilo clássico com salada
     image: 'https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?q=80&w=1000'
   },
   {
@@ -52,7 +49,6 @@ export const MENU_ITEMS: Product[] = [
     price: 21.99,
     category: 'HAMBURGUERS',
     isPopular: true,
-    // Hambúrguer com fatias de bacon visíveis
     image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1000'
   },
   {
@@ -61,7 +57,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne, Calabresa, Cheddar, Presunto, Mussarela, Ovo, Alface, Tomate, Cebola Caramelizada.',
     price: 19.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer robusto com bastante recheio
     image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1000'
   },
   {
@@ -70,7 +65,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne, Presunto, Mussarela, Queijo Cheddar, Ovo, Molho Barbecue, Anéis de Cebola, Alface, Tomate.',
     price: 21.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer alto e suculento
     image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1000'
   },
   {
@@ -80,7 +74,6 @@ export const MENU_ITEMS: Product[] = [
     price: 29.99,
     category: 'HAMBURGUERS',
     isPopular: true,
-    // Hambúrguer duplo monstro
     image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1000'
   },
   {
@@ -89,7 +82,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne Gourmet, Ovos, Calabresa, Bacon, Frango, Presunto, Mussarela, Alface, Tomate, Cebola Caramelizada, Milho Verde, Batata Palha.',
     price: 34.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer extremamente recheado, alto e robusto (estilo "monstro")
     image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1000'
   },
   {
@@ -99,7 +91,6 @@ export const MENU_ITEMS: Product[] = [
     price: 54.99,
     category: 'HAMBURGUERS',
     isPopular: true,
-    // Foto de combo com lanche e bebida
     image: 'https://images.unsplash.com/photo-1610614819513-58e34989848b?q=80&w=1000'
   },
 
@@ -110,7 +101,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Pão, Presunto, Mussarela, Queijo Coalho na chapa.',
     price: 7.99,
     category: 'SANDUICHES',
-    // Sanduíche tostado com queijo derretendo
     image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=1000'
   },
   {
@@ -119,7 +109,6 @@ export const MENU_ITEMS: Product[] = [
     description: '02 Ovos, Mussarela, Presunto, Alface, Tomate, Cebola no pão.',
     price: 11.99,
     category: 'SANDUICHES',
-    // Sanduíche de pão de forma bem recheado
     image: 'https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?q=80&w=1000'
   },
 
@@ -129,7 +118,6 @@ export const MENU_ITEMS: Product[] = [
     name: 'Batata Palito 350g',
     price: 19.99,
     category: 'FRITAS',
-    // Batatas fritas douradas
     image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?q=80&w=1000'
   },
   {
@@ -139,7 +127,6 @@ export const MENU_ITEMS: Product[] = [
     price: 29.99,
     category: 'FRITAS',
     isPopular: true,
-    // Batatas com cheddar e bacon
     image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?q=80&w=1000'
   },
   {
@@ -148,7 +135,6 @@ export const MENU_ITEMS: Product[] = [
     description: 'Porção generosa, acompanha Molho Barbecue.',
     price: 24.99,
     category: 'FRITAS',
-    // Onion rings
     image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000'
   },
 
@@ -158,7 +144,6 @@ export const MENU_ITEMS: Product[] = [
     name: 'Coca-Cola Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Lata vermelha de refrigerante
     image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000' 
   },
   { 
@@ -166,7 +151,6 @@ export const MENU_ITEMS: Product[] = [
     name: 'Coca Zero Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Copo de refrigerante escuro com gelo (representação visual segura)
     image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=1000' 
   },
   { 
@@ -174,7 +158,6 @@ export const MENU_ITEMS: Product[] = [
     name: 'Fanta Laranja Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Copo/Lata de refrigerante laranja
     image: 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?q=80&w=1000' 
   },
   { 
@@ -182,15 +165,14 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Imagem oficial do Guaraná Antarctica Lata (Wikimedia Commons)
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Guaran%C3%A1_Antarctica_2016_Lata.png/480px-Guaran%C3%A1_Antarctica_2016_Lata.png' 
+    // Hyper-realistic studio shot of a soda can on dark background
+    image: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?q=80&w=1000' 
   },
   { 
     id: 'b5', 
     name: 'Coca-Cola 1L', 
     price: 9.99, 
     category: 'BEBIDAS', 
-    // Garrafa de refrigerante (foco no líquido escuro)
     image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000' 
   },
   { 
@@ -205,8 +187,8 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná 1L', 
     price: 9.99, 
     category: 'BEBIDAS', 
-    // Garrafa de Guaraná Antarctica (Wikimedia Commons)
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Guaran%C3%A1_Antarctica.jpg/360px-Guaran%C3%A1_Antarctica.jpg' 
+    // High-quality amber liquid splash, representing premium guaraná
+    image: 'https://images.unsplash.com/photo-1543253687-c931c8e01820?q=80&w=1000' 
   },
   { 
     id: 'b8', 
@@ -231,7 +213,6 @@ export const MENU_ITEMS: Product[] = [
     price: 10.00, 
     category: 'SUCOS', 
     flavors: JUICE_FLAVORS,
-    // Copo de suco/vitamina cremoso
     image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1000'
   },
   { 
@@ -241,19 +222,50 @@ export const MENU_ITEMS: Product[] = [
     price: 9.00, 
     category: 'SUCOS', 
     flavors: JUICE_FLAVORS,
-    // Copo de suco refrescante
     image: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80&w=1000'
   },
 
   // Adicionais
-  // Carne grelhada isolada (apenas carne, sem pão)
-  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000' },
-  { id: 'ad2', name: 'Bacon Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1606851094655-b2593a9af63f?q=80&w=1000' },
-  { id: 'ad3', name: 'Anéis de Cebola Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000' },
-  // Alterado para imagem de alta qualidade do Unsplash mostrando linguiça fatiada/frita (estilo acebolada)
-  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1000' },
-  // Alterado para imagem do hambúrguer Especial (muito cheddar) conforme solicitado
-  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1000' },
-  // Alterado para imagem de ovo frito (novo link robusto)
-  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1582169505937-b9992bd01ed9?q=80&w=1000' },
+  { 
+    id: 'ad1', 
+    name: 'Carne Gourmet Extra', 
+    price: 6.99, 
+    category: 'ADICIONAIS', 
+    image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000' 
+  },
+  { 
+    id: 'ad2', 
+    name: 'Bacon Extra', 
+    price: 3.99, 
+    category: 'ADICIONAIS', 
+    image: 'https://images.unsplash.com/photo-1606851094655-b2593a9af63f?q=80&w=1000' 
+  },
+  { 
+    id: 'ad3', 
+    name: 'Anéis de Cebola Extra', 
+    price: 3.99, 
+    category: 'ADICIONAIS', 
+    image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000' 
+  },
+  { 
+    id: 'ad4', 
+    name: 'Calabresa Extra', 
+    price: 2.99, 
+    category: 'ADICIONAIS', 
+    image: 'https://images.unsplash.com/photo-1541544741938-0af808b71e40?q=80&w=1000' 
+  },
+  { 
+    id: 'ad5', 
+    name: 'Cheddar Extra', 
+    price: 1.99, 
+    category: 'ADICIONAIS', 
+    image: 'https://images.unsplash.com/photo-1551461226-9f796d36e2f1?q=80&w=1000' 
+  },
+  { 
+    id: 'ad6', 
+    name: 'Ovo Extra', 
+    price: 1.99, 
+    category: 'ADICIONAIS', 
+    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1000' 
+  },
 ];
