@@ -48,6 +48,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) =>
             <Star size={10} fill="black" /> TOP
           </div>
         )}
+
+        {/* Disclaimer de Imagem Ilustrativa */}
+        <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-[1px] py-0.5 flex justify-center items-center z-10">
+          <span className="text-[8px] text-gray-200 font-light tracking-wide leading-none">
+            (Imagem Ilustrativa)
+          </span>
+        </div>
       </div>
       
       {/* Content Body */}
