@@ -182,8 +182,8 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Lata Guaraná Antarctica
-    image: 'https://m.media-amazon.com/images/I/61p-3+-r+JL._AC_SL1000_.jpg' 
+    // Imagem oficial do Guaraná Antarctica Lata (Wikimedia Commons)
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Guaran%C3%A1_Antarctica_2016_Lata.png/480px-Guaran%C3%A1_Antarctica_2016_Lata.png' 
   },
   { 
     id: 'b5', 
@@ -205,7 +205,8 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná 1L', 
     price: 9.99, 
     category: 'BEBIDAS', 
-    image: 'https://images.unsplash.com/photo-1581006852262-e4307cf6283a?q=80&w=1000' 
+    // Garrafa de Guaraná Antarctica (Wikimedia Commons)
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Guaran%C3%A1_Antarctica.jpg/360px-Guaran%C3%A1_Antarctica.jpg' 
   },
   { 
     id: 'b8', 
