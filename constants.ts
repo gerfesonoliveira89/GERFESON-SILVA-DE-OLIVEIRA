@@ -42,8 +42,8 @@ export const MENU_ITEMS: Product[] = [
     description: 'Frango, Presunto, Mussarela, Requeijão Cremoso, Ovo, Alface, Tomate, Cebola Caramelizada.',
     price: 14.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer de frango crocante
-    image: 'https://images.unsplash.com/photo-1615557960916-5f4791effe9d?q=80&w=1000'
+    // Hambúrguer de frango estilo clássico com salada
+    image: 'https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?q=80&w=1000'
   },
   {
     id: 'h3',
@@ -70,7 +70,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne, Presunto, Mussarela, Queijo Cheddar, Ovo, Molho Barbecue, Anéis de Cebola, Alface, Tomate.',
     price: 21.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer alto e suculento (substituindo link quebrado)
+    // Hambúrguer alto e suculento
     image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1000'
   },
   {
@@ -89,8 +89,8 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne Gourmet, Ovos, Calabresa, Bacon, Frango, Presunto, Mussarela, Alface, Tomate, Cebola Caramelizada, Milho Verde, Batata Palha.',
     price: 34.99,
     category: 'HAMBURGUERS',
-    // Hambúrguer extremamente recheado estilo "Torre"
-    image: 'https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?q=80&w=1000'
+    // Hambúrguer extremamente recheado, alto e robusto (estilo "monstro")
+    image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1000'
   },
   {
     id: 'h8',
@@ -152,7 +152,7 @@ export const MENU_ITEMS: Product[] = [
     image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000'
   },
 
-  // Bebidas - Imagens Genéricas de Alta Qualidade para evitar erros de link
+  // Bebidas
   { 
     id: 'b1', 
     name: 'Coca-Cola Lata', 
@@ -182,8 +182,8 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Copo de refrigerante dourado com gelo
-    image: 'https://images.unsplash.com/photo-1581006852262-e4307cf6283a?q=80&w=1000' 
+    // Lata Guaraná Antarctica (Alta Resolução)
+    image: 'https://m.media-amazon.com/images/I/71Y-3s+9iXL._AC_SL1500_.jpg' 
   },
   { 
     id: 'b5', 
@@ -245,10 +245,14 @@ export const MENU_ITEMS: Product[] = [
   },
 
   // Adicionais
-  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1563200727-b6f790c3779e?q=80&w=1000' },
+  // Carne grelhada isolada (apenas carne, sem pão)
+  { id: 'ad1', name: 'Carne Gourmet Extra', price: 6.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000' },
   { id: 'ad2', name: 'Bacon Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1606851094655-b2593a9af63f?q=80&w=1000' },
   { id: 'ad3', name: 'Anéis de Cebola Extra', price: 3.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000' },
-  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1519077336050-46dee54995c6?q=80&w=1000' },
-  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?q=80&w=1000' },
-  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1582531652882-628d6c7028b0?q=80&w=1000' },
+  // Alterado para imagem de alta qualidade do Unsplash mostrando linguiça fatiada/frita (estilo acebolada)
+  { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1000' },
+  // Alterado para imagem do hambúrguer Especial (muito cheddar) conforme solicitado
+  { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1000' },
+  // Alterado para imagem de ovo frito (corrigindo imagem incorreta anterior)
+  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1000' },
 ];

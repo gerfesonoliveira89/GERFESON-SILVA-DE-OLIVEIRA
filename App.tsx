@@ -85,7 +85,8 @@ function App() {
           <div className="flex justify-between items-start mb-6">
             <div>
               <h1 className="text-3xl font-extrabold text-white leading-none tracking-tight">
-                HAMBURGUERIA <span className="text-brand-yellow">DO BAIANO</span>
+                HAMBURGUERIA<br />
+                <span className="text-brand-yellow">DO BAIANO</span>
               </h1>
             </div>
             
