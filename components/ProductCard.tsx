@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Product } from '../types';
-import { ShoppingBag, Star } from 'lucide-react';
+import { ShoppingBag, Star, ImageOff } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -10,26 +10,38 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   return (
     <div 
       className="group bg-brand-gray rounded-2xl p-3 border border-gray-800/50 hover:border-brand-yellow/30 transition-all flex gap-4 cursor-pointer"
       onClick={() => onClick(product)}
     >
-      <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-900">
+      <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-900 flex items-center justify-center">
         {/* Skeleton de carregamento */}
-        {!isLoaded && (
+        {!isLoaded && !hasError && (
           <div className="absolute inset-0 bg-gray-800 animate-pulse" />
         )}
-        
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-          loading="lazy"
-          decoding="async"
-          onLoad={() => setIsLoaded(true)}
-        />
+
+        {hasError ? (
+          <div className="flex flex-col items-center justify-center text-gray-600 p-2">
+            <ImageOff size={24} />
+            <span className="text-[8px] mt-1 text-center">Imagem indisponível</span>
+          </div>
+        ) : (
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setIsLoaded(true)}
+            onError={() => {
+              setHasError(true);
+              setIsLoaded(false);
+            }}
+          />
+        )}
 
         {product.isPopular && (
           <div className="absolute top-0 left-0 bg-brand-yellow text-[10px] font-bold px-2 py-1 rounded-br-lg text-brand-darker flex items-center gap-1 shadow-md z-10">
