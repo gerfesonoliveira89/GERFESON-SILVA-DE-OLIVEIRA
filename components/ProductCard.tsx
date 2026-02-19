@@ -14,25 +14,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) =>
 
   return (
     <div 
-      className="group bg-brand-gray rounded-2xl p-3 border border-gray-800/50 hover:border-brand-yellow/30 transition-all flex gap-4 cursor-pointer"
+      className="group bg-brand-gray rounded-2xl overflow-hidden border border-gray-800/50 hover:border-brand-yellow/30 transition-all flex cursor-pointer h-32"
       onClick={() => onClick(product)}
     >
-      <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-900 flex items-center justify-center">
+      {/* Image Side */}
+      <div className="relative w-32 shrink-0 bg-gray-900 overflow-hidden">
         {/* Skeleton de carregamento */}
         {!isLoaded && !hasError && (
           <div className="absolute inset-0 bg-gray-800 animate-pulse" />
         )}
 
         {hasError ? (
-          <div className="flex flex-col items-center justify-center text-gray-600 p-2">
-            <ImageOff size={24} />
-            <span className="text-[8px] mt-1 text-center">Imagem indisponível</span>
+          <div className="flex flex-col items-center justify-center h-full text-gray-600">
+            <ImageOff size={20} />
           </div>
         ) : (
           <img 
             src={product.image} 
             alt={product.name} 
-            className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             loading="lazy"
             decoding="async"
             onLoad={() => setIsLoaded(true)}
@@ -44,22 +44,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) =>
         )}
 
         {product.isPopular && (
-          <div className="absolute top-0 left-0 bg-brand-yellow text-[10px] font-bold px-2 py-1 rounded-br-lg text-brand-darker flex items-center gap-1 shadow-md z-10">
+          <div className="absolute top-2 left-2 bg-brand-yellow text-brand-darker text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg flex items-center gap-1 z-10">
             <Star size={10} fill="black" /> TOP
           </div>
         )}
       </div>
       
-      <div className="flex-1 flex flex-col justify-between py-1">
+      {/* Content Body */}
+      <div className="flex-1 p-3 flex flex-col justify-between relative">
         <div>
-          <h3 className="font-bold text-white text-lg leading-tight mb-1">{product.name}</h3>
-          <p className="text-gray-400 text-xs line-clamp-2">{product.description}</p>
+          <h3 className="font-bold text-white text-base leading-tight mb-1 group-hover:text-brand-yellow transition-colors line-clamp-1">{product.name}</h3>
+          <p className="text-gray-400 text-xs line-clamp-2 leading-relaxed">{product.description}</p>
         </div>
+        
         <div className="flex items-center justify-between mt-2">
           <span className="text-brand-yellow font-bold text-lg">
             {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}
           </span>
-          <button className="bg-gray-700 hover:bg-brand-yellow hover:text-black text-white p-2 rounded-lg transition-colors">
+          <button className="bg-brand-yellow text-brand-darker hover:bg-white p-2 rounded-lg transition-colors shadow-lg shadow-brand-yellow/10">
             <ShoppingBag size={18} />
           </button>
         </div>

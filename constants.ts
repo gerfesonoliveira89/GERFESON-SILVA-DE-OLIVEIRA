@@ -182,8 +182,8 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Lata Guaraná Antarctica (Alta Resolução)
-    image: 'https://m.media-amazon.com/images/I/71Y-3s+9iXL._AC_SL1500_.jpg' 
+    // Lata Guaraná Antarctica
+    image: 'https://m.media-amazon.com/images/I/61p-3+-r+JL._AC_SL1000_.jpg' 
   },
   { 
     id: 'b5', 
@@ -253,6 +253,6 @@ export const MENU_ITEMS: Product[] = [
   { id: 'ad4', name: 'Calabresa Extra', price: 2.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1000' },
   // Alterado para imagem do hambúrguer Especial (muito cheddar) conforme solicitado
   { id: 'ad5', name: 'Cheddar Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1000' },
-  // Alterado para imagem de ovo frito (corrigindo imagem incorreta anterior)
-  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1000' },
+  // Alterado para imagem de ovo frito (novo link robusto)
+  { id: 'ad6', name: 'Ovo Extra', price: 1.99, category: 'ADICIONAIS', image: 'https://images.unsplash.com/photo-1582169505937-b9992bd01ed9?q=80&w=1000' },
 ];
