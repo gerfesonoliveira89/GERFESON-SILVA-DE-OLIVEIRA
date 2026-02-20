@@ -24,6 +24,13 @@ const JUICE_FLAVORS = [
   'Caju', 'Cupuaçu', 'Graviola', 'Manga', 'Mangaba'
 ];
 
+/**
+ * DICA PARA IMAGENS LOCAIS:
+ * 1. Converta sua foto em um site "Image to Base64".
+ * 2. Copie o resultado (começa com data:image/...).
+ * 3. Cole no campo 'image' abaixo.
+ */
+
 export const MENU_ITEMS: Product[] = [
   // Hambúrgueres
   {
@@ -32,6 +39,7 @@ export const MENU_ITEMS: Product[] = [
     description: 'Carne Gourmet, Mussarela, Presunto, Alface, Tomate, Cebola Caramelizada.',
     price: 16.99,
     category: 'HAMBURGUERS',
+    // COLE SUA STRING BASE64 AQUI:
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000'
   },
   {
@@ -165,107 +173,6 @@ export const MENU_ITEMS: Product[] = [
     name: 'Guaraná Lata', 
     price: 5.99, 
     category: 'BEBIDAS', 
-    // Hyper-realistic studio shot of a soda can on dark background
-    image: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?q=80&w=1000' 
-  },
-  { 
-    id: 'b5', 
-    name: 'Coca-Cola 1L', 
-    price: 9.99, 
-    category: 'BEBIDAS', 
-    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000' 
-  },
-  { 
-    id: 'b6', 
-    name: 'Coca Zero 1L', 
-    price: 9.99, 
-    category: 'BEBIDAS', 
-    image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=1000' 
-  },
-  { 
-    id: 'b7', 
-    name: 'Guaraná 1L', 
-    price: 9.99, 
-    category: 'BEBIDAS', 
-    // High-quality amber liquid splash, representing premium guaraná
-    image: 'https://images.unsplash.com/photo-1543253687-c931c8e01820?q=80&w=1000' 
-  },
-  { 
-    id: 'b8', 
-    name: 'Fanta 1L', 
-    price: 9.99, 
-    category: 'BEBIDAS', 
-    image: 'https://images.unsplash.com/photo-1624517452488-04869289c4ca?q=80&w=1000' 
-  },
-  { 
-    id: 'b9', 
-    name: 'Coca-Cola 2L', 
-    price: 13.99, 
-    category: 'BEBIDAS', 
-    image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=1000' 
-  },
-
-  // Sucos
-  { 
-    id: 'su1', 
-    name: 'Suco Natural (Com Leite)', 
-    description: '500ml. Escolha o sabor da sua fruta preferida com leite.', 
-    price: 10.00, 
-    category: 'SUCOS', 
-    flavors: JUICE_FLAVORS,
-    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=1000'
-  },
-  { 
-    id: 'su2', 
-    name: 'Suco Natural (Sem Leite)', 
-    description: '500ml. Suco da fruta com água. Escolha o sabor.', 
-    price: 9.00, 
-    category: 'SUCOS', 
-    flavors: JUICE_FLAVORS,
-    image: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80&w=1000'
-  },
-
-  // Adicionais
-  { 
-    id: 'ad1', 
-    name: 'Carne Gourmet Extra', 
-    price: 6.99, 
-    category: 'ADICIONAIS', 
-    image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000' 
-  },
-  { 
-    id: 'ad2', 
-    name: 'Bacon Extra', 
-    price: 3.99, 
-    category: 'ADICIONAIS', 
-    image: 'https://images.unsplash.com/photo-1606851094655-b2593a9af63f?q=80&w=1000' 
-  },
-  { 
-    id: 'ad3', 
-    name: 'Anéis de Cebola Extra', 
-    price: 3.99, 
-    category: 'ADICIONAIS', 
-    image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=1000' 
-  },
-  { 
-    id: 'ad4', 
-    name: 'Calabresa Extra', 
-    price: 2.99, 
-    category: 'ADICIONAIS', 
-    image: 'https://images.unsplash.com/photo-1541544741938-0af808b71e40?q=80&w=1000' 
-  },
-  { 
-    id: 'ad5', 
-    name: 'Cheddar Extra', 
-    price: 1.99, 
-    category: 'ADICIONAIS', 
-    image: 'https://images.unsplash.com/photo-1551461226-9f796d36e2f1?q=80&w=1000' 
-  },
-  { 
-    id: 'ad6', 
-    name: 'Ovo Extra', 
-    price: 1.99, 
-    category: 'ADICIONAIS', 
-    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1000' 
-  },
+    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000'
+  }
 ];
